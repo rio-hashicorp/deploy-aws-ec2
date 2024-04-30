@@ -22,3 +22,11 @@ terraform {
     instance_type = "t2.micro"
     key_name = "key1"
   }
+
+output "private_ip" {
+  value = aws_instance.web1.private_ip
+}
+
+output "public_ip" {
+  value = aws_instance.web1.public_ip
+}
