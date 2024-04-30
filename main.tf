@@ -18,7 +18,7 @@ terraform {
 
   resource "aws_instance" "web1" {
     ami = "ami-08d70e59c07c61a3a"
-    instance_type = "c6xlarge"
+    instance_type = "c6a.xlarge"
     key_name = "key1"
   }
 
