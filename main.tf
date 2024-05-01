@@ -49,6 +49,6 @@ output "vault_private_ip" {
   value = aws_instance.vault-dev.private_ip
 }
 
-output "Vault Public IP Address" {
+output "Vault_Public_IP_Address" {
   value = aws_instance.vault-dev.public_ip
 }
