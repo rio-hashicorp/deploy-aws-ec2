@@ -16,8 +16,9 @@ terraform {
     region = "us-west-2"
   }
 
+
   resource "aws_instance" "web1" {
-    ami = "ami-08d70e59c07c61a3a"
+    ami = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
     instance_type = "t2.micro"
     key_name = "key1"
 
