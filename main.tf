@@ -37,18 +37,18 @@ terraform {
   }
   }
 
-output "private_ip" {
+output "nomad_private_ip" {
   value = aws_instance.nomad-dev.private_ip
 }
 
-output "public_ip" {
+output "nomad_public_ip" {
   value = aws_instance.nomad-dev.public_ip
 }
 
-output "private_ip" {
+output "vault_private_ip" {
   value = aws_instance.vault-dev.private_ip
 }
 
-output "public_ip" {
+output "Vault Public IP Address" {
   value = aws_instance.vault-dev.public_ip
 }
