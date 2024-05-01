@@ -17,13 +17,23 @@ terraform {
   }
 
 
-  resource "aws_instance" "web1" {
+  resource "aws_instance" "nomad-dev" {
     ami = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
     instance_type = "t2.micro"
     key_name = "key1"
 
     tags = {
-    Name = "web1"
+    Name = "nomad-dev"
+  }
+  }
+
+    resource "aws_instance" "vault-dev" {
+    ami = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
+    instance_type = "t2.micro"
+    key_name = "key1"
+
+    tags = {
+    Name = "vault-dev"
   }
   }
 
