@@ -38,7 +38,7 @@ terraform {
   }
 
   resource "aws_instance" "boundary_target" {
-    ami = "ami-0cf2b4e024cdb6960" #Deploy Amazon Linux 2023 AMI
+    ami = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
     instance_type = "t2.micro"
     key_name = "key1"
 
