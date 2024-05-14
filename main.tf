@@ -8,45 +8,74 @@ terraform {
 
   required_providers {
     aws = {
-        source = "hashicorp/aws"
+      source = "hashicorp/aws"
+    }
+    google = {
+      source = "hashicorp/google"
+
     }
   }
 }
-  provider "aws" {
-    region = "us-west-2"
-  }
+provider "aws" {
+  region = "us-west-2"
+}
+provider "google" {
+  project = "hc-9cb6a2a268e34ff8bf3653639eb"
+  region  = "asia-southeast2"
+  zone    = "asia-southeast2-a"
+}
 
+resource "aws_instance" "nomad-dev" {
+  ami           = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
+  instance_type = "t2.micro"
+  key_name      = "key1"
 
-  resource "aws_instance" "nomad-dev" {
-    ami = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
-    instance_type = "t2.micro"
-    key_name = "key1"
-
-    tags = {
+  tags = {
     Name = "nomad-dev"
   }
-  }
+}
 
-    resource "aws_instance" "vault-dev" {
-    ami = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
-    instance_type = "t2.micro"
-    key_name = "key1"
+resource "aws_instance" "vault-dev" {
+  ami           = "ami-023e152801ee4846a" #Deploy Amazon Linux 2023 AMI
+  instance_type = "t2.micro"
+  key_name      = "key1"
 
-    tags = {
+  tags = {
     Name = "vault-dev"
   }
-  }
+}
 
-  resource "aws_instance" "boundary_target" {
-    ami = "ami-0cf2b4e024cdb6960" #Deploy Amazon Linux 2023 AMI
-    instance_type = "t2.micro"
-    key_name = "key1"
+resource "aws_instance" "boundary_target" {
+  ami           = "ami-0cf2b4e024cdb6960" #Deploy Amazon Linux 2023 AMI
+  instance_type = "t2.micro"
+  key_name      = "key1"
 
-    tags = {
+  tags = {
     Name = "boundary-target"
   }
+}
+
+resource "google_compute_network" "vpc_network" {
+  name = "rio-terraform-network"
+}
+
+resource "google_compute_instance" "vm_instance" {
+
+  name         = "rio-terraform-instance1"
+  machine_type = "e2-medium"
+  zone         = "asia-southeast2-a"
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-10"
+    }
   }
 
+  network_interface {
+    network = google_compute_network.vpc_network.name
+    access_config {
+    }
+  }
+}
 
 # Nomad
 output "Nomad_Private_IP_Address" {
