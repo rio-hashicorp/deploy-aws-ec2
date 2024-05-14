@@ -45,10 +45,10 @@ resource "aws_instance" "vault-dev" {
   }
 }
 
-resource "aws_instance" "boundary_target" {
-  ami           = "ami-0cf2b4e024cdb6960" #Deploy Amazon Linux 2023 AMI
-  instance_type = "t2.micro"
-  key_name      = "key1"
+  resource "aws_instance" "boundary_target" {
+    ami = "ami-0cf2b4e024cdb6960" #Deploy Amazon Linux 2023 AMI
+    instance_type = "t2.micro"
+    key_name = "key1"
 
   tags = {
     Name = "boundary-target"
