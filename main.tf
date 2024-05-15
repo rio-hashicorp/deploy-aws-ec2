@@ -59,7 +59,7 @@ resource "google_compute_network" "vpc_network" {
   name = "rio-terraform-network"
 }
 
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "vault_gcp" {
 
   name         = "rio-terraform-instance1"
   machine_type = "e2-medium"
