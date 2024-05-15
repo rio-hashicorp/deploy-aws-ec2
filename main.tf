@@ -103,3 +103,12 @@ output "Boundary_Private_IP_Address" {
 output "Boundary_Public_IP_Address" {
   value = aws_instance.boundary_target.public_ip
 }
+
+# Vault GCP
+output "Vault_GCP_Private_IP_Address" {
+  value = google_compute_instance.vault_gcp.network_ip
+}
+
+output "Vault_GCP_Public_IP_Address" {
+  value = google_compute_instance.vault_gcp.nat_ip
+}
