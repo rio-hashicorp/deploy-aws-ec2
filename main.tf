@@ -108,7 +108,3 @@ output "Boundary_Public_IP_Address" {
 output "Vault_GCP_Private_IP_Address" {
   value = google_compute_instance.vault_gcp.network_interface.0.network_ip
 }
-
-output "Vault_GCP_Public_IP_Address" {
-  value = google_compute_instance.vault_gcp.access_config.0.nat_ip
-}
