@@ -110,5 +110,5 @@ output "Vault_GCP_Private_IP_Address" {
 }
 
 output "Vault_GCP_Public_IP_Address" {
-  value = google_compute_instance.0.vault_gcp.nat_ip
+  value = google_compute_instance.vault_gcp.network_interface.0.nat_ip
 }
